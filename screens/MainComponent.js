@@ -67,7 +67,7 @@ const ContactNavigator = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="Contact"
-        component={AboutScreen}
+        component={ContactScreen}
         options={{ title: "Contact Us" }}
       />
     </Stack.Navigator>
