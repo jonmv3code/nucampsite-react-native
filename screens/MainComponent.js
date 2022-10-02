@@ -7,18 +7,17 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "./HomeScreen";
 import AboutScreen from "./AboutScreen";
 import ContactScreen from "./ContactScreen";
-
 const Drawer = createDrawerNavigator();
 
 const screenOptions = {
   headerTintColor: "#fff",
-  headerStyle: { backgroundColor: "#563700" },
+  headerStyle: { backgroundColor: "#5637DD" },
 };
 
 const HomeNavigator = () => {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
         name="Home"
         component={HomeScreen}
@@ -30,12 +29,7 @@ const HomeNavigator = () => {
 const DirectoryNavigator = () => {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator
-      initialRouteName="Directory"
-      screenOptions={{
-        headerStyle: { screenOptions },
-      }}
-    >
+    <Stack.Navigator initialRouteName="Directory" screenOptions={screenOptions}>
       <Stack.Screen
         name="Directory"
         component={DirectoryScreen}
@@ -55,21 +49,20 @@ const DirectoryNavigator = () => {
 const AboutNavigator = () => {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name="About" component={AboutScreen} />
     </Stack.Navigator>
   );
 };
-
 const ContactNavigator = () => {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
         name="Contact"
-        component={ContactScreen}
         options={{ title: "Contact Us" }}
-      />
+        component={ContactScreen}
+      ></Stack.Screen>
     </Stack.Navigator>
   );
 };
@@ -97,11 +90,7 @@ const Main = () => {
           options={{ title: "Directory" }}
         />
         <Drawer.Screen name="About" component={AboutNavigator} />
-        <Drawer.Screen
-          name="Contact Us"
-          component={ContactNavigator}
-          options={{ title: "Contact Us" }}
-        />
+        <Drawer.Screen name="Contact Us" component={ContactNavigator} />
       </Drawer.Navigator>
     </View>
   );

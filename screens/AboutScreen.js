@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { PARTNERS } from "../shared/partners";
+import { Text } from "react-native-elements";
 import { Avatar, Card, ListItem } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 
 function Mission() {
   return (
-    <Card wrapperStyle={{ margin: 10 }}>
+    <Card>
       <Card.Title>Our Mission</Card.Title>
-      <Card.Divider />
-      <Text>
+      {/* <Card.Divider /> */}
+      <Text style={{ margin: 10 }}>
         We present a curated database of the best campsites in the vast woods
         and backcountry of the World Wide Web Wilderness. We increase access to
         adventure for the public while promoting safe and respectful use of
@@ -21,27 +22,30 @@ function Mission() {
   );
 }
 
-function AboutScreen() {
+const AboutScreen = () => {
+  const [partners, setPartners] = useState(PARTNERS);
+
   return (
-    <div>
-      <ScrollView>
-        <Mission />
-        <Card>
-          <Card.Title>Community Partners</Card.Title>
-          <Card.Divider />
-          {PARTNERS.map((partner) => {
+    <ScrollView>
+      <Mission />
+      <Card>
+        <Card.Title>Community Partners</Card.Title>
+        <Card.Divider />
+
+        {partners.map((partner) => {
+          return (
             <ListItem key={partner.id}>
               <Avatar source={partner.image} rounded />
               <ListItem.Content>
                 <ListItem.Title>{partner.name}</ListItem.Title>
                 <ListItem.Subtitle>{partner.description}</ListItem.Subtitle>
               </ListItem.Content>
-            </ListItem>;
-          })}
-        </Card>
-      </ScrollView>
-    </div>
+            </ListItem>
+          );
+        })}
+      </Card>
+    </ScrollView>
   );
-}
+};
 
 export default AboutScreen;
