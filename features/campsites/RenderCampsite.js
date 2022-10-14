@@ -1,13 +1,15 @@
 import { useRef } from "react";
-import { Alert, PanResponder, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, PanResponder, Alert } from "react-native";
 import { Card, Icon } from "react-native-elements";
-import * as Animatable from "react-native-animatable";
 import { baseUrl } from "../../shared/baseUrl";
+import * as Animatable from "react-native-animatable";
 
 const RenderCampsite = (props) => {
   const { campsite } = props;
-  const isLeftSwipe = ({ dx }) => dx < -200;
+
   const view = useRef();
+
+  const isLeftSwipe = ({ dx }) => dx < -200;
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -43,6 +45,7 @@ const RenderCampsite = (props) => {
       }
     },
   });
+
   if (campsite) {
     return (
       <Animatable.View

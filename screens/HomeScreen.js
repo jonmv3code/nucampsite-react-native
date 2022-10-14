@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Animated, Text, View } from "react-native";
+import { Text, View, Animated } from "react-native";
 import { Card } from "react-native-elements";
 import { useSelector } from "react-redux";
 import { baseUrl } from "../shared/baseUrl";
@@ -18,13 +18,18 @@ const FeaturedItem = (props) => {
       </View>
     );
   }
-
   if (item) {
     return (
       <Card containerStyle={{ padding: 0 }}>
         <Card.Image source={{ uri: baseUrl + item.image }}>
           <View style={{ justifyContent: "center", flex: 1 }}>
-            <Text style={{ color: "white", textAlign: "center", fontSize: 20 }}>
+            <Text
+              style={{
+                color: "white",
+                textAlign: "center",
+                fontSize: 20,
+              }}
+            >
               {item.name}
             </Text>
           </View>
